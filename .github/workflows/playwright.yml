@@ -91,6 +91,32 @@ jobs:
                         "type": "mrkdwn",
                         "text": "*${{ job.status }}*"
                       }
+                    },
+                    {
+                      "type": "divider"
+                    },
+                    {
+                      "type": "actions",
+                      "elements": [
+                        {
+                          "type": "button",
+                          "text": {
+                            "type": "plain_text",
+                            "text": "Build",
+                            "emoji": true
+                          },
+                          "url": "${{ env.REPO_URL }}/actions/runs/${{ github.run_id }}"
+                        },
+                        {
+                          "type": "button",
+                          "text": {
+                            "type": "plain_text",
+                            "text": "Commit",
+                            "emoji": true
+                          },
+                          "url": "${{ env.REPO_URL }}/commit/${{ github.sha }}"
+                        }
+                      ]
                     }
                   ]
                 }
