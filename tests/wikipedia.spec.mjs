@@ -2,6 +2,8 @@ import { test, expect } from "@playwright/test";
 
 test.describe("Wikipedia", () => {
   test("検索", async ({ page }, testInfo) => {
+    const screenshotPath = `test-results/${testInfo.titlePath}`.replace(/,/g, "/");
+
     await page.goto(
       "https://ja.wikipedia.org/wiki/%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B8"
     );
@@ -12,14 +14,14 @@ test.describe("Wikipedia", () => {
 
     await page.locator('input:has-text("表示")').click();
     await expect(page).toHaveURL("https://ja.wikipedia.org/wiki/%E3%83%88%E3%82%AB%E3%82%B2");
-    await page.screenshot({ path: `test-results/${testInfo.titlePath}_0.png`, fullPage: true });
+    await page.screenshot({ path: `${screenshotPath}_0.png`, fullPage: true });
 
     await page.locator('div[role="main"] a:has-text("爬虫類")').click();
     await expect(page).toHaveURL("https://ja.wikipedia.org/wiki/%E7%88%AC%E8%99%AB%E9%A1%9E");
-    await page.screenshot({ path: `test-results/${testInfo.titlePath}_1.png`, fullPage: true });
+    await page.screenshot({ path: `${screenshotPath}_1.png`, fullPage: true });
 
     await page.locator('div[role="main"] >> text=昆虫').click();
     await expect(page).toHaveURL("https://ja.wikipedia.org/wiki/%E6%98%86%E8%99%AB");
-    await page.screenshot({ path: `test-results/${testInfo.titlePath}_2.png`, fullPage: true });
+    await page.screenshot({ path: `${screenshotPath}_2.png`, fullPage: true });
   });
 });
