@@ -40,21 +40,11 @@ jobs:
         with:
           payload: |
             {
-              "username": "E2Eテスト"
-              "icon_emoji": ":sunny:",
-              "text": "E2Eテスト結果 *${{ job.status }}*",
+              "text": "E2Eテスト結果に成功しました。",
               "attachments": [
                 {
                   "color": "#2EB67D",
                   "blocks": [
-                    {
-                      "type": "header",
-                      "text": {
-                        "type": "plain_text",
-                        "text": "E2Eテスト結果",
-                        "emoji": true
-                      }
-                    },
                     {
                       "type": "section",
                       "text": {
@@ -81,21 +71,11 @@ jobs:
         with:
           payload: |
             {
-              "username": "E2Eテスト"
-              "icon_emoji": ":umbrella:",
-              "text": "E2Eテスト結果 *${{ job.status }}*",
+              "text": "E2Eテスト結果に失敗しました。",
               "attachments": [
                 {
                   "color": "#d90000",
                   "blocks": [
-                    {
-                      "type": "header",
-                      "text": {
-                        "type": "plain_text",
-                        "text": "E2Eテスト結果",
-                        "emoji": true
-                      }
-                    },
                     {
                       "type": "section",
                       "text": {
