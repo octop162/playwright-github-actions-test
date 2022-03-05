@@ -6,7 +6,7 @@ on:
     branches: [main, master]
   schedule:
     # UTC
-    - cron: "0 9 * * *"
+    - cron: "0 9 20 * *"
 
 jobs:
   test:
@@ -42,6 +42,7 @@ jobs:
         with:
           payload: |
             {
+              "text": "E2Eテストに成功しました。",
               "attachments": [
                 {
                   "color": "#2EB67D",
