@@ -28,11 +28,10 @@ reports:
     file-format: JUNITXML
 artifacts:
   files:
-    - playwright-report/*
-    - test-results/*
+    - playwright-report/**
+    - test-results/**
   name: artifact-$(date +%Y-%m-%d)
   enable-symlinks: no
 cache:
   paths:
     - node_modules/*
-    - path
