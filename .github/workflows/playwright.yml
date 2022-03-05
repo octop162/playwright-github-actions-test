@@ -45,7 +45,7 @@ jobs:
               "text": "E2Eテストを実施しました。",
               "attachments": [
                 {
-                  "color": "${{ (success() && '#2EB67D') || '#d90000' "}}",
+                  "color": "${{ (success() && '#2EB67D') || '#d90000' }}",
                   "blocks": [
                     {
                       "type": "section",
