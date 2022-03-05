@@ -33,14 +33,14 @@ jobs:
             test-results/
           retention-days: 7
       - name: Slack Notification on Success
+        id: slack
         if: ${{ success() }}
         uses: slackapi/slack-github-action@v1.18.0
         env:
-          SLACK_TITLE: Scenario Test Success
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       - name: Slack Notification on Failure
+        id: slack
         if: ${{ failure() }}
         uses: slackapi/slack-github-action@v1.18.0
         env:
-          SLACK_TITLE: Scenario Test Failure
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
