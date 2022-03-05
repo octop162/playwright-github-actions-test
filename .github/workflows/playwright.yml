@@ -39,13 +39,14 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+          SLACK_COLOR: ${{ ( success() && '#2EB67D') || '#d90000' }}
         with:
           payload: |
             {
               "text": "E2Eテストを実施しました。",
               "attachments": [
                 {
-                  "color": "${{ (success() && '#2EB67D') || '#d90000' }}",
+                  "color": "${{ SLACK_COLOR }}",
                   "blocks": [
                     {
                       "type": "section",
