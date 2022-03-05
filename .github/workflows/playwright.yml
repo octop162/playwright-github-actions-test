@@ -18,7 +18,7 @@ jobs:
       - name: Install Playwright
         run: npx playwright install chromium
       - name: Install Fonts
-        run: apt install fonts-ipafont-gothic
+        run: sudo apt install fonts-ipafont-gothic
       - name: Run Playwright tests
         run: npx playwright test
       - uses: actions/upload-artifact@v3
