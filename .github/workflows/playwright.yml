@@ -33,20 +33,19 @@ jobs:
             playwright-report/
             test-results/
           retention-days: 7
-      - name: Slack Notification
+      - name: Slack Notification on Success
         if: ${{ success() }}
         uses: slackapi/slack-github-action@v1.18.0
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
-          SLACK_COLOR: ${{ ( success() && '#2EB67D') || '#d90000' }}
         with:
           payload: |
             {
               "text": "E2Eテストを実施しました。",
               "attachments": [
                 {
-                  "color": "${{ SLACK_COLOR }}",
+                  "color": "#2EB67D",
                   "blocks": [
                     {
                       "type": "section",
@@ -59,7 +58,39 @@ jobs:
                       "type": "section",
                       "text": {
                         "type": "mrkdwn",
-                        "text": "RunId: *${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}*"
+                        "text": "Run: *${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}*"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+      - name: Slack Notification on Failure
+        if: ${{ failure() }}
+        uses: slackapi/slack-github-action@v1.18.0
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+        with:
+          payload: |
+            {
+              "text": "E2Eテストに失敗しました。",
+              "attachments": [
+                {
+                  "color": "#d90000",
+                  "blocks": [
+                    {
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "Status: *${{ job.status }}*"
+                      }
+                    },
+                    {
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "Run: *${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}*"
                       }
                     }
                   ]
