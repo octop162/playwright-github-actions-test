@@ -24,7 +24,7 @@ jobs:
       - name: Install Fonts
         run: sudo apt install fonts-ipafont-gothic
       - name: Run Playwright tests
-        run: npx playwright test
+        run: npx playwright test --project chromium
       - uses: actions/upload-artifact@v3
         if: always()
         with:
@@ -33,7 +33,7 @@ jobs:
             playwright-report/
             test-results/
           retention-days: 7
-      - name: Slack Notification on Success
+      - name: Slack Notification
         if: ${{ success() }}
         uses: slackapi/slack-github-action@v1.18.0
         env:
@@ -42,10 +42,10 @@ jobs:
         with:
           payload: |
             {
-              "text": "E2Eテストに成功しました。",
+              "text": "E2Eテストを実施しました。",
               "attachments": [
                 {
-                  "color": "#2EB67D",
+                  "color": "${{ (success() && '#2EB67D') || '#d90000' "}}",
                   "blocks": [
                     {
                       "type": "section",
@@ -58,39 +58,7 @@ jobs:
                       "type": "section",
                       "text": {
                         "type": "mrkdwn",
-                        "text": "RunId: *${{ github.run_id}}*"
-                      }
-                    }
-                  ]
-                }
-              ]
-            }
-      - name: Slack Notification on Failure
-        if: ${{ failure() }}
-        uses: slackapi/slack-github-action@v1.18.0
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
-        with:
-          payload: |
-            {
-              "text": "E2Eテストに失敗しました。",
-              "attachments": [
-                {
-                  "color": "#d90000",
-                  "blocks": [
-                    {
-                      "type": "section",
-                      "text": {
-                        "type": "mrkdwn",
-                        "text": "Status: *${{ job.status }}*"
-                      }
-                    },
-                    {
-                      "type": "section",
-                      "text": {
-                        "type": "mrkdwn",
-                        "text": "RunId: *${{ github.run_id}}*"
+                        "text": "RunId: *${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}*"
                       }
                     }
                   ]

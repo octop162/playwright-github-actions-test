@@ -2,7 +2,8 @@ import { test, expect } from "@playwright/test";
 
 test.describe("Wikipedia", () => {
   test("検索", async ({ page }, testInfo) => {
-    const screenshotPath = `test-results/${testInfo.titlePath}`.replace(/,/g, "/");
+    const screenshotPath =
+      `test-results/screenshots/${testInfo.project.name}${testInfo.titlePath}`.replace(/,/g, "/");
 
     await page.goto(
       "https://ja.wikipedia.org/wiki/%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B8"
