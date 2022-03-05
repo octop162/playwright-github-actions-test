@@ -3,7 +3,7 @@ import { test, expect } from "@playwright/test";
 test.describe("Wikipedia", () => {
   test("検索", async ({ page }, testInfo) => {
     const screenshotPath =
-      `test-results/screenshots/${testInfo.project.name}${testInfo.titlePath}`.replace(/,/g, "/");
+      `test-results/screenshots/${testInfo.project.name}/${testInfo.titlePath}`.replace(/,/g, "/");
 
     await page.goto(
       "https://ja.wikipedia.org/wiki/%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B8"
@@ -23,7 +23,6 @@ test.describe("Wikipedia", () => {
 
     await page.locator('div[role="main"] >> text=昆虫').click();
     await expect(page).toHaveURL("https://ja.wikipedia.org/wiki/%E6%98%86%E8%99%AB");
-    await expect(page).toHaveTitle("Dummy");
     await page.screenshot({ path: `${screenshotPath}_2.png`, fullPage: true });
   });
 });
