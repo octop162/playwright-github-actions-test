@@ -40,20 +40,14 @@ jobs:
         with:
           payload: |
             {
-              "text": "result\n *${{ job.status }}*",
-              "blocks": [],
-              "attachments": [
+              "text": "シナリオテスト結果\n*${{ job.status }}*"
+              "blocks": [
                 {
-                  "color": "#2eb67d",
-                  "blocks": [
-                    {
-                      "type": "section",
-                      "text": {
-                        "type": "mrkdwn",
-                        "text": "result\n*${{ job.status }}*"
-                      }
-                    }
-                  ]
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "シナリオテスト結果\n*${{ job.status }}*"
+                  }
                 }
               ]
             }
@@ -66,13 +60,13 @@ jobs:
         with:
           payload: |
             {
-              "text": "Error",
+              "text": "シナリオテスト結果\n*${{ job.status }}*"
               "blocks": [
                 {
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "result\n*${{ job.status }}*"
+                    "text": "シナリオテスト結果\n*${{ job.status }}*"
                   }
                 }
               ]
