@@ -40,7 +40,7 @@ jobs:
         with:
           payload: |
             {
-              "text": "シナリオテスト結果\n*${{ job.status }}*"
+              "text": "シナリオテスト結果 ${{ job.status }}",
               "blocks": [
                 {
                   "type": "section",
@@ -60,7 +60,7 @@ jobs:
         with:
           payload: |
             {
-              "text": "シナリオテスト結果\n*${{ job.status }}*"
+              "text": "シナリオテスト結果 ${{ job.status }}",
               "blocks": [
                 {
                   "type": "section",
