@@ -1,0 +1,44 @@
+version: 0.2
+
+env:
+  shell: shell-tag
+  variables:
+    SLACK_WEBHOOK_URL: ""
+    PLAYWRIGHT_JUNIT_OUTPUT_NAME: playwright-report/results.xml
+
+proxy:
+  upload-artifacts: no | yes
+  logs: no | yes
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+      runtime: version
+    commands:
+      - npm ci
+  pre_build:
+    on-failure: ABORT
+    commands:
+      - npx playwright install chromium
+      - apt install -y fonts-ipafont-gothic
+  build:
+    on-failure: CONTINUE
+    commands:
+      - npx playwright test --project chromium
+      - npx playwright test --reporter=junit --project=chromium
+reports:
+  report-group-name-or-arn:
+    files:
+      - ${PLAYWRIGHT_JUNIT_OUTPUT_NAME}
+    file-format: JUNITXML
+artifacts:
+  files:
+    - playwright-report/*
+    - test-results/*
+  name: artifact-$(date +%Y-%m-%d)
+  enable-symlinks: no
+cache:
+  paths:
+    - node_modules/*
+    - path
