@@ -58,16 +58,4 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         with:
-          payload: |
-            {
-              "text": "シナリオテスト結果 ${{ job.status }}",
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "シナリオテスト結果\n*${{ job.status }}*"
-                  }
-                }
-              ]
-            }
+          payload-file-path: "./.github/workflows/failure_slack.json"
