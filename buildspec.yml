@@ -3,6 +3,7 @@ version: 0.2
 env:
   variables:
     PLAYWRIGHT_JUNIT_OUTPUT_NAME: playwright-report/results.xml
+    CI: true
 
 phases:
   install:
