@@ -40,7 +40,7 @@ jobs:
         with:
           payload: |
             {
-              "text": "E2Eテスト結果に成功しました。",
+              "text": "E2Eテストに成功しました。",
               "attachments": [
                 {
                   "color": "#2EB67D",
@@ -71,7 +71,7 @@ jobs:
         with:
           payload: |
             {
-              "text": "E2Eテスト結果に失敗しました。",
+              "text": "E2Eテストに失敗しました。",
               "attachments": [
                 {
                   "color": "#d90000",
