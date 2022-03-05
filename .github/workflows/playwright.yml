@@ -40,22 +40,57 @@ jobs:
         with:
           payload: |
             {
-              "text": "シナリオテスト結果 ${{ job.status }}",
-              "blocks": [
+              "attachments": [
                 {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "シナリオテスト結果\n*${{ job.status }}*"
-                  }
+                  "color": "#d90000",
+                  "blocks": [
+                    {
+                      "type": "header",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "シナリオテスト結果",
+                        "emoji": true
+                      }
+                    },
+                    {
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "*${{ job.status }}*"
+                      }
+                    }
+                  ]
                 }
               ]
             }
-
       - name: Slack Notification on Failure
         if: ${{ failure() }}
         uses: slackapi/slack-github-action@v1.18.0
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         with:
-          payload-file-path: "./.github/workflows/failure_slack.json"
+          payload: |
+            {
+              "attachments": [
+                {
+                  "color": "#2EB67D",
+                  "blocks": [
+                    {
+                      "type": "header",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "シナリオテスト結果",
+                        "emoji": true
+                      }
+                    },
+                    {
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "*${{ job.status }}*"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
