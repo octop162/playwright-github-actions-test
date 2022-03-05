@@ -15,7 +15,7 @@ phases:
     on-failure: ABORT
     commands:
       - npx playwright install chromium
-      - apt install -y fonts-ipafont-gothic
+      - apt update && apt install -y fonts-ipafont-gothic
   build:
     on-failure: CONTINUE
     commands:
