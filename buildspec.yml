@@ -19,7 +19,6 @@ phases:
   build:
     on-failure: CONTINUE
     commands:
-      - npx playwright test --project chromium
       - npx playwright test --reporter=junit --project=chromium
       - ls
 reports:
