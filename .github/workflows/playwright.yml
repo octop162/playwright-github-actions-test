@@ -41,7 +41,6 @@ jobs:
         with:
           payload: |
             {
-              "text": "E2Eテストに成功しました。",
               "attachments": [
                 {
                   "color": "#2EB67D",
@@ -50,14 +49,14 @@ jobs:
                       "type": "section",
                       "text": {
                         "type": "mrkdwn",
-                        "text": "Status：*${{ job.status }}*"
+                        "text": "Status: *${{ job.status }}*"
                       }
                     },
                     {
                       "type": "section",
                       "text": {
                         "type": "mrkdwn",
-                        "text": "RunId：*${{ github.run_id}}*"
+                        "text": "RunId: *${{ github.run_id}}*"
                       }
                     }
                   ]
@@ -81,14 +80,14 @@ jobs:
                       "type": "section",
                       "text": {
                         "type": "mrkdwn",
-                        "text": "Status：*${{ job.status }}*"
+                        "text": "Status: *${{ job.status }}*"
                       }
                     },
                     {
                       "type": "section",
                       "text": {
                         "type": "mrkdwn",
-                        "text": "RunId：*${{ github.run_id}}*"
+                        "text": "RunId: *${{ github.run_id}}*"
                       }
                     }
                   ]
