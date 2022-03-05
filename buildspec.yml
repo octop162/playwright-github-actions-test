@@ -2,7 +2,6 @@ version: 0.2
 
 env:
   variables:
-    SLACK_WEBHOOK_URL: ""
     PLAYWRIGHT_JUNIT_OUTPUT_NAME: playwright-report/results.xml
 
 phases:
