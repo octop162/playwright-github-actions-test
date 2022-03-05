@@ -4,11 +4,9 @@ on:
     branches: [main, master]
   pull_request:
     branches: [main, master]
-
-env:
-  SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
-  SLACK_USERNAME: E2E
-  SLACK_CHANNEL: develop
+  on:
+    schedule:
+      - cron: "0 3 * * *"
 
 jobs:
   test:
@@ -37,13 +35,13 @@ jobs:
           retention-days: 7
       - name: Slack Notification on Success
         if: ${{ success() }}
-        uses: rtCamp/action-slack-notify@v2
+        uses: slackapi/slack-github-action@v1.18.0
         env:
           SLACK_TITLE: Scenario Test Success
-          SLACK_COLOR: good
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
       - name: Slack Notification on Failure
         if: ${{ failure() }}
-        uses: rtCamp/action-slack-notify@v2
+        uses: slackapi/slack-github-action@v1.18.0
         env:
           SLACK_TITLE: Scenario Test Failure
-          SLACK_COLOR: danger
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
