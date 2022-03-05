@@ -4,6 +4,12 @@ on:
     branches: [main, master]
   pull_request:
     branches: [main, master]
+
+env:
+  SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+  SLACK_USERNAME: E2E
+  SLACK_CHANNEL: develop
+
 jobs:
   test:
     timeout-minutes: 60
@@ -29,3 +35,15 @@ jobs:
             playwright-report/
             test-results/
           retention-days: 7
+      - name: Slack Notification on Success
+        if: ${{ success() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_TITLE: Scenario Test Success
+          SLACK_COLOR: good
+      - name: Slack Notification on Failure
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_TITLE: Scenario Test Failure
+          SLACK_COLOR: danger
