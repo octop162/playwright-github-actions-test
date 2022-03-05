@@ -6,10 +6,6 @@ env:
     SLACK_WEBHOOK_URL: ""
     PLAYWRIGHT_JUNIT_OUTPUT_NAME: playwright-report/results.xml
 
-proxy:
-  upload-artifacts: no | yes
-  logs: no | yes
-
 phases:
   install:
     runtime-versions:
