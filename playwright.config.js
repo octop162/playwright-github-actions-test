@@ -47,6 +47,7 @@ const config = {
       name: "chromium",
       use: {
         ...devices["Desktop Chrome"],
+        viewport: { width: 1600, height: 900 },
       },
     },
 
@@ -54,6 +55,7 @@ const config = {
       name: "firefox",
       use: {
         ...devices["Desktop Firefox"],
+        viewport: { width: 1600, height: 900 },
       },
     },
 
