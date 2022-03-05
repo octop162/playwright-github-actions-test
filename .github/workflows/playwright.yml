@@ -40,16 +40,18 @@ jobs:
         with:
           payload: |
             {
-              "text": "シナリオテスト結果 *${{ job.status }}*",
+              "username": "E2Eテスト"
+              "icon_emoji": ":sunny:",
+              "text": "E2Eテスト結果 *${{ job.status }}*",
               "attachments": [
                 {
-                  "color": "#d90000",
+                  "color": "#2EB67D",
                   "blocks": [
                     {
                       "type": "header",
                       "text": {
                         "type": "plain_text",
-                        "text": "シナリオテスト結果",
+                        "text": "E2Eテスト結果",
                         "emoji": true
                       }
                     },
@@ -57,7 +59,14 @@ jobs:
                       "type": "section",
                       "text": {
                         "type": "mrkdwn",
-                        "text": "*${{ job.status }}*"
+                        "text": "Status：*${{ job.status }}*"
+                      }
+                    },
+                    {
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "RunId：*${{ github.run_id}}*"
                       }
                     }
                   ]
@@ -72,16 +81,18 @@ jobs:
         with:
           payload: |
             {
-              "text": "シナリオテスト結果 *${{ job.status }}*",
+              "username": "E2Eテスト"
+              "icon_emoji": ":umbrella:",
+              "text": "E2Eテスト結果 *${{ job.status }}*",
               "attachments": [
                 {
-                  "color": "#2EB67D",
+                  "color": "#d90000",
                   "blocks": [
                     {
                       "type": "header",
                       "text": {
                         "type": "plain_text",
-                        "text": "シナリオテスト結果",
+                        "text": "E2Eテスト結果",
                         "emoji": true
                       }
                     },
@@ -89,34 +100,15 @@ jobs:
                       "type": "section",
                       "text": {
                         "type": "mrkdwn",
-                        "text": "*${{ job.status }}*"
+                        "text": "Status：*${{ job.status }}*"
                       }
                     },
                     {
-                      "type": "divider"
-                    },
-                    {
-                      "type": "actions",
-                      "elements": [
-                        {
-                          "type": "button",
-                          "text": {
-                            "type": "plain_text",
-                            "text": "Build",
-                            "emoji": true
-                          },
-                          "url": "${{ env.REPO_URL }}/actions/runs/${{ github.run_id }}"
-                        },
-                        {
-                          "type": "button",
-                          "text": {
-                            "type": "plain_text",
-                            "text": "Commit",
-                            "emoji": true
-                          },
-                          "url": "${{ env.REPO_URL }}/commit/${{ github.sha }}"
-                        }
-                      ]
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "RunId：*${{ github.run_id}}*"
+                      }
                     }
                   ]
                 }
