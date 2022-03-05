@@ -22,6 +22,7 @@ test.describe("Wikipedia", () => {
 
     await page.locator('div[role="main"] >> text=昆虫').click();
     await expect(page).toHaveURL("https://ja.wikipedia.org/wiki/%E6%98%86%E8%99%AB");
+    await expect(page).toHaveTitle("Hogehoge");
     await page.screenshot({ path: `${screenshotPath}_2.png`, fullPage: true });
   });
 });
