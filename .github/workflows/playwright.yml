@@ -40,13 +40,20 @@ jobs:
         with:
           payload: |
             {
-              "blocks": [
+              "text": "シナリオテスト",
+              "blocks": [],
+              "attachments": [
                 {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "シナリオテスト結果: ${{ job.status }}\n${{ github.repositoryUrl }}"
-                  }
+                  "color": "#00FF00",
+                  "blocks": [
+                    {
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "シナリオテスト結果: ${{ job.status }}"
+                      }
+                    }
+                  ]
                 }
               ]
             }
@@ -59,13 +66,20 @@ jobs:
         with:
           payload: |
             {
-              "blocks": [
+              "text": "シナリオテスト",
+              "blocks": [],
+              "attachments": [
                 {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "シナリオテスト結果: ${{ job.status }}\n${{ github.repositoryUrl }}"
-                  }
+                  "color": "#00FF00",
+                  "blocks": [
+                    {
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "シナリオテスト結果: ${{ job.status }}"
+                      }
+                    }
+                  ]
                 }
               ]
             }
