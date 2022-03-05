@@ -21,6 +21,7 @@ phases:
     commands:
       - npx playwright test --project chromium
       - npx playwright test --reporter=junit --project=chromium
+      - ls
 reports:
   report-group-name-or-arn:
     files:
@@ -28,8 +29,8 @@ reports:
     file-format: JUNITXML
 artifacts:
   files:
-    - playwright-report/**
-    - test-results/**
+    - playwright-report/**/*
+    - test-results/**/*
   name: artifact-$(date +%Y-%m-%d)
   enable-symlinks: no
 cache:
