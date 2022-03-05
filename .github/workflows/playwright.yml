@@ -40,6 +40,8 @@ jobs:
         with:
           payload: |
             {
+              "text": "シナリオテスト結果\n *${{ job.status }}*",
+              "blocks": [],
               "attachments": [
                 {
                   "color": "#2EB67D",
@@ -64,6 +66,8 @@ jobs:
         with:
           payload: |
             {
+              "text": "シナリオテスト結果\n *${{ job.status }}*",
+              "blocks": [],
               "attachments": [
                 {
                   "color": "#E01E5A",
