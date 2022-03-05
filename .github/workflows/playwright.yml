@@ -6,7 +6,7 @@ on:
     branches: [main, master]
   schedule:
     # UTC
-    - cron: "0 9 20 * *"
+    - cron: "35 9 * * *"
 
 jobs:
   test:
