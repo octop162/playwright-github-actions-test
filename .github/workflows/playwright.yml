@@ -72,7 +72,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "Error"
+                    "text": "result\n*${{ job.status }}*"
                   }
                 }
               ]
