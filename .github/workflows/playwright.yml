@@ -44,13 +44,13 @@ jobs:
               "blocks": [],
               "attachments": [
                 {
-                  "color": "#2EB67D",
+                  "color": "#2eb67d",
                   "blocks": [
                     {
                       "type": "section",
                       "text": {
                         "type": "mrkdwn",
-                        "text": "result\n *${{ job.status }}*"
+                        "text": "result\n*${{ job.status }}*"
                       }
                     }
                   ]
@@ -70,13 +70,13 @@ jobs:
               "blocks": [],
               "attachments": [
                 {
-                  "color": "#E01E5A",
+                  "color": "#e01e5a",
                   "blocks": [
                     {
                       "type": "section",
                       "text": {
                         "type": "mrkdwn",
-                        "text": "result\n *${{ job.status }}*"
+                        "text": "result\n*${{ job.status }}*"
                       }
                     }
                   ]
