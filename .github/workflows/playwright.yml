@@ -58,7 +58,7 @@ jobs:
                       "type": "section",
                       "text": {
                         "type": "mrkdwn",
-                        "text": "Run: *${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}*"
+                        "text": "Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
                       }
                     }
                   ]
@@ -90,7 +90,7 @@ jobs:
                       "type": "section",
                       "text": {
                         "type": "mrkdwn",
-                        "text": "Run: *${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}*"
+                        "text": "Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
                       }
                     }
                   ]
