@@ -66,20 +66,14 @@ jobs:
         with:
           payload: |
             {
-              "text": "result\n *${{ job.status }}*",
-              "blocks": [],
-              "attachments": [
+              "text": "Error",
+              "blocks": [
                 {
-                  "color": "#e01e5a",
-                  "blocks": [
-                    {
-                      "type": "section",
-                      "text": {
-                        "type": "mrkdwn",
-                        "text": "result\n*${{ job.status }}*"
-                      }
-                    }
-                  ]
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "Error"
+                  }
                 }
               ]
             }
